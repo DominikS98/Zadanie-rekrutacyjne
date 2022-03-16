@@ -6,8 +6,12 @@ let tab = [];
 function fetchData() {
     const url = 'https://picsum.photos/v2/list';
     return fetch(url).then(resp => {
-        return resp.json();
-
+        if (resp.status >= 200 && resp.status <= 300) {
+            return resp.json();
+        }
+        else {
+            throw new Error(`HTTP error! Status: ${resp.status}`);
+        }
     });
 }
 
@@ -28,6 +32,8 @@ async function getLinks() {
     })
     presentsData();
 }
+
+
 function presentsData() {
     tab.forEach(item => {
         if (item.id >= id && item.id < id + 3) {

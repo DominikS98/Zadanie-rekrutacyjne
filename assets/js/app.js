@@ -36,7 +36,7 @@ async function getLinks() {
 
 function presentsData() {
     tab.forEach(item => {
-        if (item.id >= id && item.id < id + 3) {
+        if (item.id >= id && item.id < (id + 3)) {
             const template = document.querySelector('#template');
             const boxImg = document.importNode(template.content, true);
             boxImg.querySelector('img').src = item.url;
@@ -53,7 +53,14 @@ function deleteNode() {
     }
 }
 nextButt.addEventListener('click', () => {
-    id += 3;
+
+    if (id + 3 >= tab[tab.length - 1].id) {
+        id = tab[tab.length - 1].id - 1;
+    }
+    else {
+        id += 3;
+    }
+
     deleteNode();
     presentsData();
 })

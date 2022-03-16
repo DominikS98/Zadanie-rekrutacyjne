@@ -1,0 +1,11 @@
+#content-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.img-box {
+  width: 20%;
+  margin: 10px;
+}
+.img-box img {
+  width: 100%;
+}
